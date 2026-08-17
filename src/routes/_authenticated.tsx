@@ -39,9 +39,9 @@ function DashboardLayout() {
 
   const navItems = [
     { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard" },
-    { label: "Campanhas", icon: Target, to: "/campaigns" },
-    { label: "Tarefas", icon: CheckSquare, to: "/tasks" },
-    { label: "Perfil", icon: User, to: "/settings" },
+    { label: "Campanhas", icon: Target, to: "/dashboard" },
+    { label: "Tarefas", icon: CheckSquare, to: "/dashboard" },
+    { label: "Perfil", icon: User, to: "/dashboard" },
   ];
 
   return (
