@@ -1,5 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link, Outlet, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { 
   LayoutDashboard, 
   Target, 
@@ -49,7 +48,7 @@ function DashboardLayout() {
       {/* Sidebar - Desktop */}
       <aside className="hidden md:flex w-64 flex-col border-r bg-card">
         <div className="flex h-16 items-center px-6 border-b">
-          <Link to="/dashboard" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <Zap className="h-6 w-6 text-primary" />
             <span className="text-lg font-bold tracking-tight">Future Bloom</span>
           </Link>
@@ -57,8 +56,8 @@ function DashboardLayout() {
         <nav className="flex-1 overflow-y-auto p-4 space-y-2">
           {navItems.map((item) => (
             <Link
-              key={item.to}
-              to={item.to}
+              key={item.label}
+              to={item.to as any}
               activeProps={{ className: "bg-primary/10 text-primary" }}
               className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
             >
@@ -133,8 +132,8 @@ function DashboardLayout() {
             <nav className="space-y-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.to}
-                  to={item.to}
+                  key={item.label}
+                  to={item.to as any}
                   activeProps={{ className: "bg-primary/10 text-primary" }}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                   onClick={() => setIsSidebarOpen(false)}
