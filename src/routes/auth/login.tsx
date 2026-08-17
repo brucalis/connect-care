@@ -25,6 +25,7 @@ export const Route = createFileRoute("/auth/login")({
 function LoginPage() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   const {
     register,
@@ -36,6 +37,7 @@ function LoginPage() {
 
   const onSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
+    setFeedback(null);
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email: data.email,
@@ -43,14 +45,18 @@ function LoginPage() {
       });
 
       if (error) {
-        toast.error(error.message === "Invalid login credentials" ? "Credenciais inválidas" : error.message);
+        const message = error.message === "Invalid login credentials" ? "Credenciais inválidas" : error.message;
+        toast.error(message);
+        setFeedback(message);
         return;
       }
 
       toast.success("Login realizado com sucesso!");
       navigate({ to: "/dashboard" });
     } catch (error) {
-      toast.error("Ocorreu um erro inesperado");
+      const message = error instanceof Error ? error.message : "Ocorreu um erro inesperado";
+      toast.error(message);
+      setFeedback(message);
     } finally {
       setIsLoading(false);
     }
@@ -74,6 +80,11 @@ function LoginPage() {
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">
+            {feedback && (
+              <div role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+                {feedback}
+              </div>
+            )}
             <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
               <Input
