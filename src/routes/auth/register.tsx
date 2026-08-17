@@ -26,6 +26,7 @@ export const Route = createFileRoute("/auth/register")({
 function RegisterPage() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [feedback, setFeedback] = useState<{ kind: "error" | "success"; message: string } | null>(null);
 
   const {
     register,
@@ -37,8 +38,9 @@ function RegisterPage() {
 
   const onSubmit = async (data: RegisterFormValues) => {
     setIsLoading(true);
+    setFeedback(null);
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data: signUpData, error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
@@ -50,13 +52,21 @@ function RegisterPage() {
 
       if (error) {
         toast.error(error.message);
+        setFeedback({ kind: "error", message: error.message });
         return;
       }
 
-      toast.success("Conta criada com sucesso! Verifique seu e-mail.");
-      navigate({ to: "/auth/login" });
+      const needsEmailConfirmation = !signUpData.session;
+      const message = needsEmailConfirmation
+        ? "Conta criada. Verifique seu e-mail para confirmar o cadastro antes de entrar."
+        : "Conta criada com sucesso. Você já pode acessar o painel.";
+      toast.success(message);
+      setFeedback({ kind: "success", message });
+      window.setTimeout(() => navigate({ to: needsEmailConfirmation ? "/auth/login" : "/dashboard" }), 1200);
     } catch (error) {
-      toast.error("Ocorreu um erro inesperado");
+      const message = error instanceof Error ? error.message : "Ocorreu um erro inesperado";
+      toast.error(message);
+      setFeedback({ kind: "error", message });
     } finally {
       setIsLoading(false);
     }
@@ -80,6 +90,18 @@ function RegisterPage() {
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">
+            {feedback && (
+              <div
+                role="status"
+                className={`rounded-lg border px-3 py-2 text-sm ${
+                  feedback.kind === "error"
+                    ? "border-destructive/40 bg-destructive/10 text-destructive"
+                    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-700"
+                }`}
+              >
+                {feedback.message}
+              </div>
+            )}
             <div className="space-y-2">
               <Label htmlFor="fullName">Nome Completo</Label>
               <Input
