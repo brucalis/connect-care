@@ -112,9 +112,6 @@ function LandingPage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/auth/login">Já tenho conta</Link>
-              </Button>
             </div>
           </div>
 
