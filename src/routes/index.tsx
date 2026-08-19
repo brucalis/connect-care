@@ -54,23 +54,6 @@ const benefits = [
   },
 ];
 
-const steps = [
-  {
-    number: "01",
-    title: "Crie sua conta",
-    description: "Cadastre-se gratuitamente em menos de um minuto.",
-  },
-  {
-    number: "02",
-    title: "Cadastre suas campanhas",
-    description: "Defina canal, orçamento, período e status de cada campanha.",
-  },
-  {
-    number: "03",
-    title: "Acompanhe as entregas",
-    description: "Crie tarefas, acompanhe prazos e conclua o que importa.",
-  },
-];
 
 function LandingPage() {
   return (
