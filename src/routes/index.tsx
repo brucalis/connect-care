@@ -54,23 +54,6 @@ const benefits = [
   },
 ];
 
-const steps = [
-  {
-    number: "01",
-    title: "Crie sua conta",
-    description: "Cadastre-se gratuitamente em menos de um minuto.",
-  },
-  {
-    number: "02",
-    title: "Cadastre suas campanhas",
-    description: "Defina canal, orçamento, período e status de cada campanha.",
-  },
-  {
-    number: "03",
-    title: "Acompanhe as entregas",
-    description: "Crie tarefas, acompanhe prazos e conclua o que importa.",
-  },
-];
 
 function LandingPage() {
   return (
@@ -175,27 +158,6 @@ function LandingPage() {
           </div>
         </section>
 
-        {/* Como funciona */}
-        <section className="py-20">
-          <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-center text-3xl font-bold tracking-tight">
-              Como funciona
-            </h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {steps.map((step) => (
-                <div key={step.number} className="rounded-2xl border bg-card p-6">
-                  <span className="text-sm font-bold text-primary">
-                    {step.number}
-                  </span>
-                  <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* CTA final */}
         <section className="border-t bg-gradient-to-r from-primary/10 to-pink-500/10 py-20">
