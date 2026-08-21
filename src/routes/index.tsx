@@ -11,20 +11,20 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Future Bloom | Gerenciador de Campanhas de Marketing" },
+      { title: "Marketing Charts | Gerenciador de Campanhas de Marketing" },
       {
         name: "description",
         content:
-          "Organize campanhas, tarefas e resultados de marketing em um só lugar com o Future Bloom.",
+          "Organize campanhas, tarefas e resultados de marketing em um só lugar com o Marketing Charts.",
       },
       {
         property: "og:title",
-        content: "Future Bloom | Gerenciador de Campanhas de Marketing",
+        content: "Marketing Charts | Gerenciador de Campanhas de Marketing",
       },
       {
         property: "og:description",
         content:
-          "Organize campanhas, tarefas e resultados de marketing em um só lugar com o Future Bloom.",
+          "Organize campanhas, tarefas e resultados de marketing em um só lugar com o Marketing Charts.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -64,7 +64,7 @@ function LandingPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <Zap className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold tracking-tight">Future Bloom</span>
+            <span className="text-xl font-bold tracking-tight">Marketing Charts</span>
           </div>
           <nav className="flex items-center gap-2">
             <Button variant="ghost" asChild>
@@ -85,7 +85,7 @@ function LandingPage() {
               Marketing organizado do plano à entrega
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              O Future Bloom reúne campanhas, tarefas e indicadores em uma
+              O Marketing Charts reúne campanhas, tarefas e indicadores em uma
               plataforma simples, rápida e feita para times enxutos.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -182,7 +182,7 @@ function LandingPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              © 2026 Future Bloom. Todos os direitos reservados.
+              © 2026 Marketing Charts. Todos os direitos reservados.
             </p>
             <div className="flex gap-6">
               <Link to="/auth/login" className="text-sm text-muted-foreground hover:text-primary">

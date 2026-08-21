@@ -50,7 +50,7 @@ function DashboardLayout() {
         <div className="flex h-16 items-center px-6 border-b">
           <Link to="/" className="flex items-center gap-2">
             <Zap className="h-6 w-6 text-primary" />
-            <span className="text-lg font-bold tracking-tight">Future Bloom</span>
+            <span className="text-lg font-bold tracking-tight">Marketing Charts</span>
           </Link>
         </div>
         <nav className="flex-1 overflow-y-auto p-4 space-y-2">
@@ -123,7 +123,7 @@ function DashboardLayout() {
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-2 text-primary font-bold">
                 <Zap className="h-6 w-6" />
-                <span>Future Bloom</span>
+                <span>Marketing Charts</span>
               </div>
               <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(false)}>
                 <X className="h-5 w-5" />
