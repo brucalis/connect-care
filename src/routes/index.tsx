@@ -68,7 +68,7 @@ function LandingPage() {
               Marketing organizado do plano à entrega
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Teste de integração concluído
+              Integração Super Lovable validada
             </p>
             <p className="mt-6 text-lg text-muted-foreground">
               O Marketing Charts reúne campanhas, tarefas e indicadores em uma
