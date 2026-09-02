@@ -4,7 +4,42 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[]
+  | Json[];
+
+export type CampaignAttentionLevel = 'low' | 'medium' | 'high' | 'critical';
+export type CampaignHealth = 'excellent' | 'good' | 'fair' | 'poor';
+
+export interface Campaign {
+  id: string;
+  name: string;
+  description?: string;
+  start_date: string;
+  end_date: string;
+  status: 'active' | 'paused' | 'completed' | 'archived';
+  budget?: number;
+  channel?: string;
+  created_at: string;
+  updated_at: string;
+  attention_level: CampaignAttentionLevel;
+  health: CampaignHealth;
+  // Outros campos relevantes para campanhas
+}
+
+export type TaskPriority = 'low' | 'medium' | 'high' | 'urgent';
+
+export interface Task {
+  id: string;
+  campaign_id: string;
+  title: string;
+  description?: string;
+  due_date: string;
+  status: 'pending' | 'in_progress' | 'completed' | 'blocked';
+  assigned_to?: string;
+  priority: TaskPriority;
+  created_at: string;
+  updated_at: string;
+  // Outros campos relevantes para tarefas
+}
 
 export type Database = {
   // Allows to automatically instantiate createClient with right options
