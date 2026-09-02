@@ -67,6 +67,9 @@ function LandingPage() {
             <h1 className="bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-6xl">
               Marketing organizado do plano à entrega
             </h1>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Teste de integração concluído
+            </p>
             <p className="mt-6 text-lg text-muted-foreground">
               O Marketing Charts reúne campanhas, tarefas e indicadores em uma
               plataforma simples, rápida e feita para times enxutos.
