@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { MetricCard } from "@/components/MetricCard";
+import { Separator } from "@/components/ui/separator";
 
 
 import { Button } from "@/components/ui/button";
@@ -68,7 +70,7 @@ function LandingPage() {
               Marketing organizado do plano à entrega
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Alteração automática confirmada
+              Gerencie suas campanhas de marketing de forma eficiente.
             </p>
             <p className="mt-6 text-lg text-muted-foreground">
               O Marketing Charts reúne campanhas, tarefas e indicadores em uma
@@ -84,37 +86,16 @@ function LandingPage() {
             </div>
           </div>
 
-          {/* Demonstração visual do painel */}
+          {/* Resumo da semana */}
           <div className="mx-auto mt-16 max-w-4xl rounded-2xl border bg-card p-6 shadow-lg">
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                { label: "Campanhas ativas", value: "8" },
-                { label: "Tarefas pendentes", value: "14" },
-                { label: "Tarefas concluídas", value: "62" },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-xl border bg-background p-4">
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  <p className="mt-1 text-3xl font-bold text-primary">{stat.value}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-xl border bg-background p-4">
-                <p className="text-sm font-semibold">Campanhas recentes</p>
-                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                  <li>Lançamento Primavera — Instagram</li>
-                  <li>Reengajamento — E-mail</li>
-                  <li>Promoção Relâmpago — WhatsApp</li>
-                </ul>
-              </div>
-              <div className="rounded-xl border bg-background p-4">
-                <p className="text-sm font-semibold">Próximas tarefas</p>
-                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                  <li>Aprovar criativos — hoje</li>
-                  <li>Revisar orçamento de mídia — amanhã</li>
-                  <li>Publicar newsletter — sexta</li>
-                </ul>
-              </div>
+            <h2 className="text-xl font-semibold mb-4">Resumo da semana</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <MetricCard label="Campanhas Ativas" value="8" />
+              <MetricCard label="Campanhas Pausadas" value="2" />
+              <MetricCard label="Tarefas Pendentes" value="14" />
+              <MetricCard label="Tarefas Concluídas" value="62" />
+              <MetricCard label="Tarefas Atrasadas" value="3" />
+              <MetricCard label="Tarefas Próximos 7 Dias" value="5" />
             </div>
           </div>
         </section>
