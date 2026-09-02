@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MetricCard } from "@/components/MetricCard";
 import { Separator } from "@/components/ui/separator";
+import { CampaignFilters } from "@/components/CampaignFilters";
+import { DeadlineList } from "@/components/DeadlineList";
 
 
 import { Button } from "@/components/ui/button";
@@ -97,6 +99,18 @@ function LandingPage() {
               <MetricCard label="Tarefas Atrasadas" value="3" />
               <MetricCard label="Tarefas Próximos 7 Dias" value="5" />
             </div>
+          </div>
+
+          {/* Filtros de Campanhas */}
+          <div className="mx-auto mt-16 max-w-4xl rounded-2xl border bg-card p-6 shadow-lg">
+            <h2 className="text-xl font-semibold mb-4">Filtrar Campanhas</h2>
+            <CampaignFilters />
+          </div>
+
+          {/* Próximos Prazos */}
+          <div className="mx-auto mt-16 max-w-4xl rounded-2xl border bg-card p-6 shadow-lg">
+            <h2 className="text-xl font-semibold mb-4">Próximos Prazos</h2>
+            <DeadlineList />
           </div>
         </section>
 
