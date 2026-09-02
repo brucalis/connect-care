@@ -146,7 +146,7 @@ function LandingPage() {
 
 
         {/* CTA final */}
-        <section className="border-t bg-gradient-to-r from-primary/10 to-pink-500/10 py-20">
+        <section className="border-t bg-gradient-to-r from-primary/10 to-purple-500/10 py-20">
           <div className="container mx-auto px-4 text-center md:px-6">
             <h2 className="text-3xl font-bold tracking-tight">
               Pronto para florescer seus resultados?
