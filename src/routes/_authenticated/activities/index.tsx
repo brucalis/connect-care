@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ActivityList } from "@/components/ActivityList";
-import { ActivityFilters } from "@/components/ActivityFilters";
+import { ActivityFilters, ActivityFilterState } from "@/components/ActivityFilters";
 import { ActivitySummaryCard } from "@/components/ActivitySummaryCard";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { Activity, ActivityStatus } from "@/types/activities";
+import { List, Clock, CheckCircle2, AlertTriangle } from "lucide-react";
 
-export const Route = createFileRoute("/_authenticated/activities")({
+export const Route = createFileRoute("/_authenticated/activities/")({
   component: ActivitiesPage,
 });
 
@@ -81,16 +82,45 @@ function ActivitiesPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Simula carregamento de dados
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     // Simula erro
-  //     // setError("Falha ao carregar atividades.");
-  //     setActivities(mockActivities);
-  //     setLoading(false);
-  //   }, 1500);
-  // }, []);
+  const handleFilterChange = (filters: ActivityFilterState) => {
+    let filtered = [...mockActivities];
+
+    if (filters.searchText.trim()) {
+      const search = filters.searchText.toLowerCase();
+      filtered = filtered.filter(
+        (a) =>
+          a.title.toLowerCase().includes(search) ||
+          (a.description && a.description.toLowerCase().includes(search))
+      );
+    }
+
+    if (filters.category) {
+      filtered = filtered.filter((a) =>
+        a.category.toLowerCase().includes(filters.category.toLowerCase())
+      );
+    }
+
+    if (filters.status) {
+      filtered = filtered.filter((a) => a.status === filters.status);
+    }
+
+    if (filters.dateRange?.from || filters.dateRange?.to) {
+      filtered = filtered.filter((a) => {
+        const due = new Date(a.dueDate).getTime();
+        const from = filters.dateRange?.from ? new Date(filters.dateRange.from).setHours(0, 0, 0, 0) : null;
+        const to = filters.dateRange?.to ? new Date(filters.dateRange.to).setHours(23, 59, 59, 999) : null;
+        if (from && due < from) return false;
+        if (to && due > to) return false;
+        return true;
+      });
+    }
+
+    setActivities(filtered);
+  };
+
+  const handleClearFilters = () => {
+    setActivities(mockActivities);
+  };
 
   return (
     <div className="space-y-8">
@@ -100,15 +130,15 @@ function ActivitiesPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <ActivitySummaryCard title="Total" value={activities.length} />
-        <ActivitySummaryCard title="Pendentes" value={activities.filter(a => a.status === ActivityStatus.PENDING).length} />
-        <ActivitySummaryCard title="Em Andamento" value={activities.filter(a => a.status === ActivityStatus.IN_PROGRESS).length} />
-        <ActivitySummaryCard title="Atrasadas" value={activities.filter(a => a.status === ActivityStatus.OVERDUE).length} />
+        <ActivitySummaryCard title="Total" value={activities.length} icon={List} colorClass="text-blue-500" />
+        <ActivitySummaryCard title="Pendentes" value={activities.filter(a => a.status === ActivityStatus.PENDING).length} icon={Clock} colorClass="text-amber-500" />
+        <ActivitySummaryCard title="Em Andamento" value={activities.filter(a => a.status === ActivityStatus.IN_PROGRESS).length} icon={CheckCircle2} colorClass="text-primary" />
+        <ActivitySummaryCard title="Atrasadas" value={activities.filter(a => a.status === ActivityStatus.OVERDUE).length} icon={AlertTriangle} colorClass="text-destructive" />
       </div>
 
       <Separator />
 
-      <ActivityFilters />
+      <ActivityFilters onFilterChange={handleFilterChange} onClearFilters={handleClearFilters} />
 
       <Separator />
 

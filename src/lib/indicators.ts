@@ -1,4 +1,31 @@
-import { Campaign, CampaignAttentionLevel, CampaignHealth, Task } from "@/integrations/supabase/types";
+export type Campaign = {
+  id: string;
+  name: string;
+  description?: string | null;
+  budget?: number | null;
+  channel?: string | null;
+  color?: string | null;
+  start_date?: string | null;
+  end_date?: string | null;
+  status?: string | null;
+  created_at?: string | null;
+  user_id: string;
+};
+
+export type Task = {
+  id: string;
+  title: string;
+  description?: string | null;
+  status?: string | null;
+  priority?: string | null;
+  due_date?: string | null;
+  campaign_id?: string | null;
+  user_id: string;
+  created_at?: string | null;
+};
+
+export type CampaignAttentionLevel = 'low' | 'medium' | 'high' | 'critical';
+export type CampaignHealth = 'excellent' | 'good' | 'fair' | 'poor';
 
 /**
  * Calcula o nível de atenção de uma campanha com base em suas tarefas.
@@ -7,7 +34,7 @@ import { Campaign, CampaignAttentionLevel, CampaignHealth, Task } from "@/integr
  * @returns O nível de atenção da campanha.
  */
 export function calculateCampaignAttentionLevel(campaign: Campaign, tasks: Task[]): CampaignAttentionLevel {
-  const overdueTasks = tasks.filter(task => task.campaign_id === campaign.id && task.status !== 'completed' && new Date(task.due_date) < new Date());
+  const overdueTasks = tasks.filter(task => task.campaign_id === campaign.id && task.status !== 'completed' && task.due_date && new Date(task.due_date) < new Date());
   const highPriorityPendingTasks = tasks.filter(task => task.campaign_id === campaign.id && task.status === 'pending' && task.priority === 'high');
   const urgentPendingTasks = tasks.filter(task => task.campaign_id === campaign.id && task.status === 'pending' && task.priority === 'urgent');
 

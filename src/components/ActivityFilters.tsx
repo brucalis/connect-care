@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
+import { type DateRange } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { ptBR } from "date-fns/locale";
 
@@ -19,14 +20,14 @@ export interface ActivityFilterState {
   searchText: string;
   category: string;
   status: string;
-  dateRange: { from: Date | undefined; to: Date | undefined };
+  dateRange: DateRange | undefined;
 }
 
 export function ActivityFilters({ onFilterChange, onClearFilters }: ActivityFiltersProps) {
   const [searchText, setSearchText] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [status, setStatus] = useState<string>("");
-  const [dateRange, setDateRange] = useState<{ from: Date | undefined; to: Date | undefined }>({ from: undefined, to: undefined });
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
 
   const handleApplyFilters = () => {
     onFilterChange({
@@ -41,7 +42,7 @@ export function ActivityFilters({ onFilterChange, onClearFilters }: ActivityFilt
     setSearchText("");
     setCategory("");
     setStatus("");
-    setDateRange({ from: undefined, to: undefined });
+    setDateRange(undefined);
     onClearFilters();
   };
 
@@ -98,12 +99,12 @@ export function ActivityFilters({ onFilterChange, onClearFilters }: ActivityFilt
               variant={"outline"}
               className={cn(
                 "w-full justify-start text-left font-normal",
-                !dateRange.from && "text-muted-foreground"
+                !dateRange?.from && "text-muted-foreground"
               )}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
-              {dateRange.from ? (
-                dateRange.to ? (
+              {dateRange?.from ? (
+                dateRange?.to ? (
                   <>{format(dateRange.from, "dd/MM/yyyy", { locale: ptBR })} - {format(dateRange.to, "dd/MM/yyyy", { locale: ptBR })}</>
                 ) : (
                   format(dateRange.from, "dd/MM/yyyy", { locale: ptBR })
@@ -117,7 +118,6 @@ export function ActivityFilters({ onFilterChange, onClearFilters }: ActivityFilt
             <Calendar
               initialFocus
               mode="range"
-              defaultMonth={dateRange.from}
               selected={dateRange}
               onSelect={setDateRange}
               numberOfMonths={2}

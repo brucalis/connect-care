@@ -7,16 +7,16 @@ import { InfoIcon } from 'lucide-react';
 
 // Mock data for demonstration purposes
 // In a real application, this would come from an API or global state
-const mockDeadlines = [
+const mockDeadlines: DeadlineItem[] = [
   { id: 't1', type: 'task', title: 'Revisar copy da campanha de email', dueDate: '2024-07-10', status: 'pending', campaignName: 'Lançamento de Produto X' },
   { id: 'c1', type: 'campaign', title: 'Campanha de Verão', dueDate: '2024-07-15', status: 'active' },
   { id: 't2', type: 'task', title: 'Criar artes para social media', dueDate: '2024-07-12', status: 'in_progress', campaignName: 'Campanha de Verão' },
-  { id: 't3', type: 'task', title: 'Agendar posts no Instagram', dueDate: '2024-07-05', status: 'blocked', campaignName: 'Campanha de Verão' }, // Atrasado
+  { id: 't3', type: 'task', title: 'Agendar posts no Instagram', dueDate: '2024-07-05', status: 'blocked', campaignName: 'Campanha de Verão' },
   { id: 'c2', type: 'campaign', title: 'Campanha de Inverno', dueDate: '2024-07-20', status: 'paused' },
-  { id: 't4', type: 'task', title: 'Análise de resultados do Q2', dueDate: '2024-07-13', status: 'completed', campaignName: 'Relatório Trimestral' }, // Hoje
-  { id: 't5', type: 'task', title: 'Planejar próxima newsletter', dueDate: '2024-07-16', status: 'pending', campaignName: 'Comunicação Semanal' }, // Próximos 3 dias
-  { id: 'c3', type: 'campaign', title: 'Campanha de Outono', dueDate: '2024-07-25', status: 'active' }, // Próximos 7 dias
-  { id: 't6', type: 'task', title: 'Pesquisa de mercado para novo produto', dueDate: '2024-08-01', status: 'pending', campaignName: 'Desenvolvimento de Produto' }, // Depois de 7 dias
+  { id: 't4', type: 'task', title: 'Análise de resultados do Q2', dueDate: '2024-07-13', status: 'completed', campaignName: 'Relatório Trimestral' },
+  { id: 't5', type: 'task', title: 'Planejar próxima newsletter', dueDate: '2024-07-16', status: 'pending', campaignName: 'Comunicação Semanal' },
+  { id: 'c3', type: 'campaign', title: 'Campanha de Outono', dueDate: '2024-07-25', status: 'active' },
+  { id: 't6', type: 'task', title: 'Pesquisa de mercado para novo produto', dueDate: '2024-08-01', status: 'pending', campaignName: 'Desenvolvimento de Produto' },
 ];
 
 interface DeadlineItem {
