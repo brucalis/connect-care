@@ -26,7 +26,7 @@ export function ActivityFilters({ onFilterChange, onClearFilters }: ActivityFilt
   const [searchText, setSearchText] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [status, setStatus] = useState<string>("");
-  const [dateRange, setDateRange] = useState<{ from: Date | undefined; to: Date | undefined }>({ from: undefined, to: undefined });
+  const [dateRange, setDateRange] = useState<{ from?: Date; to?: Date }>({ from: undefined, to: undefined });
 
   const handleApplyFilters = () => {
     onFilterChange({
