@@ -1,6 +1,27 @@
-export type ActivityStatus = 'pending' | 'completed' | 'overdue' | 'in_progress';
-export type ActivityPriority = 'low' | 'medium' | 'high';
-export type ActivityType = 'email' | 'social_media' | 'blog_post' | 'ad_campaign' | 'event' | 'other';
+export const ActivityStatus = {
+  PENDING: 'pending',
+  IN_PROGRESS: 'in_progress',
+  COMPLETED: 'completed',
+  OVERDUE: 'overdue',
+} as const;
+export type ActivityStatus = typeof ActivityStatus[keyof typeof ActivityStatus];
+
+export const ActivityPriority = {
+  LOW: 'low',
+  MEDIUM: 'medium',
+  HIGH: 'high',
+} as const;
+export type ActivityPriority = typeof ActivityPriority[keyof typeof ActivityPriority];
+
+export const ActivityType = {
+  EMAIL: 'email',
+  SOCIAL_MEDIA: 'social_media',
+  BLOG_POST: 'blog_post',
+  AD_CAMPAIGN: 'ad_campaign',
+  EVENT: 'event',
+  OTHER: 'other',
+} as const;
+export type ActivityType = typeof ActivityType[keyof typeof ActivityType];
 
 export interface Activity {
   id: string;
