@@ -118,7 +118,6 @@ export function ActivityFilters({ onFilterChange, onClearFilters }: ActivityFilt
             <Calendar
               initialFocus
               mode="range"
-              defaultMonth={dateRange?.from}
               selected={dateRange}
               onSelect={setDateRange}
               numberOfMonths={2}
