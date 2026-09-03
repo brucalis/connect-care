@@ -146,51 +146,53 @@ export function ActivityList({ activities, loading, error }: ActivityListProps) 
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Lista de Atividades</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Título</TableHead>
-              <TableHead>Categoria</TableHead>
-              <TableHead>Responsável</TableHead>
-              <TableHead>Prazo</TableHead>
-              <TableHead className="text-center">Status</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {sortedActivities.map((activity) => (
-              <TableRow key={activity.id} onClick={() => setSelectedActivity(activity)} className="cursor-pointer hover:bg-muted/50">
-                <TableCell className="font-medium">
-                  {activity.title}
-                  <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{activity.description}</p>
-                </TableCell>
-                <TableCell>{activity.category}</TableCell>
-                <TableCell>{activity.assignedTo}</TableCell>
-                <TableCell>{format(parseISO(activity.dueDate), "dd/MM/yyyy HH:mm", { locale: ptBR })}</TableCell>
-                <TableCell className="text-center">
-                  <Badge variant={getStatusVariant(activity.status)}>{getStatusText(activity.status)}</Badge>
-                </TableCell>
+    <>
+      <Card>
+        <CardHeader>
+          <CardTitle>Lista de Atividades</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Título</TableHead>
+                <TableHead>Categoria</TableHead>
+                <TableHead>Responsável</TableHead>
+                <TableHead>Prazo</TableHead>
+                <TableHead className="text-center">Status</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+            </TableHeader>
+            <TableBody>
+              {sortedActivities.map((activity) => (
+                <TableRow key={activity.id} onClick={() => setSelectedActivity(activity)} className="cursor-pointer hover:bg-muted/50">
+                  <TableCell className="font-medium">
+                    {activity.title}
+                    <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{activity.description}</p>
+                  </TableCell>
+                  <TableCell>{activity.category}</TableCell>
+                  <TableCell>{activity.assignedTo}</TableCell>
+                  <TableCell>{format(parseISO(activity.dueDate), "dd/MM/yyyy HH:mm", { locale: ptBR })}</TableCell>
+                  <TableCell className="text-center">
+                    <Badge variant={getStatusVariant(activity.status)}>{getStatusText(activity.status)}</Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
 
-    <Sheet open={!!selectedActivity} onOpenChange={(open) => !open && setSelectedActivity(null)}>
-      <SheetContent side="right" className="w-full sm:max-w-md">
-        <SheetHeader>
-          <SheetTitle>Detalhes da Atividade</SheetTitle>
-          <SheetDescription>
-            Visualize as informações completas e o histórico desta atividade.
-          </SheetDescription>
-        </SheetHeader>
-        {selectedActivity && <ActivityDetail activity={selectedActivity} />}
-      </SheetContent>
-    </Sheet>
+      <Sheet open={!!selectedActivity} onOpenChange={(open) => !open && setSelectedActivity(null)}>
+        <SheetContent side="right" className="w-full sm:max-w-md">
+          <SheetHeader>
+            <SheetTitle>Detalhes da Atividade</SheetTitle>
+            <SheetDescription>
+              Visualize as informações completas e o histórico desta atividade.
+            </SheetDescription>
+          </SheetHeader>
+          {selectedActivity && <ActivityDetail activity={selectedActivity} />}
+        </SheetContent>
+      </Sheet>
+    </>
   );
 }
