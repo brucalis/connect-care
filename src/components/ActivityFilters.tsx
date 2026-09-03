@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
-import { Calendar, type DateRange } from "@/components/ui/calendar";
+import { Calendar } from "@/components/ui/calendar";
+import { type DateRange } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { ptBR } from "date-fns/locale";
 
