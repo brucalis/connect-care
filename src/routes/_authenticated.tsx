@@ -8,7 +8,8 @@ import {
   Zap,
   Menu,
   X,
-  Bell
+  Bell,
+  ListTodo
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -40,6 +41,7 @@ function DashboardLayout() {
     { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard" },
     { label: "Campanhas", icon: Target, to: "/dashboard" },
     { label: "Tarefas", icon: CheckSquare, to: "/dashboard" },
+    { label: "Atividades", icon: ListTodo, to: "/activities" },
     { label: "Perfil", icon: User, to: "/dashboard" },
   ];
 
