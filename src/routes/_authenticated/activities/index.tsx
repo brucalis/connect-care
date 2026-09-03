@@ -104,11 +104,11 @@ function ActivitiesPage() {
       filtered = filtered.filter((a) => a.status === filters.status);
     }
 
-    if (filters.dateRange.from || filters.dateRange.to) {
+    if (filters.dateRange?.from || filters.dateRange?.to) {
       filtered = filtered.filter((a) => {
         const due = new Date(a.dueDate).getTime();
-        const from = filters.dateRange.from ? new Date(filters.dateRange.from).setHours(0, 0, 0, 0) : null;
-        const to = filters.dateRange.to ? new Date(filters.dateRange.to).setHours(23, 59, 59, 999) : null;
+        const from = filters.dateRange?.from ? new Date(filters.dateRange.from).setHours(0, 0, 0, 0) : null;
+        const to = filters.dateRange?.to ? new Date(filters.dateRange.to).setHours(23, 59, 59, 999) : null;
         if (from && due < from) return false;
         if (to && due > to) return false;
         return true;
