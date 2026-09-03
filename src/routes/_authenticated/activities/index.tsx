@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { Activity, ActivityStatus } from "@/types/activities";
 
-export const Route = createFileRoute("/_authenticated/activities")({
+export const Route = createFileRoute("/_authenticated/activities/")({
   component: ActivitiesPage,
 });
 
