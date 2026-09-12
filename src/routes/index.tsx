@@ -61,7 +61,7 @@ const benefits = [
 
 function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-slate-950">
       <main className="flex-1">
         {/* Hero */}
         <section className="container mx-auto px-4 py-20 md:px-6 md:py-28">
@@ -69,7 +69,7 @@ function LandingPage() {
             <h1 className="bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-6xl">
               Marketing organizado do plano à entrega
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
+            <p className="mt-6 text-lg text-slate-300">
               O Marketing Charts reúne campanhas, tarefas e indicadores em uma
               plataforma simples, rápida e feita para times enxutos.
             </p>
