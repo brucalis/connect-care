@@ -93,6 +93,24 @@ function LandingPage() {
               <MetricCard label="Tarefas Concluídas" value="62" />
               <MetricCard label="Tarefas Atrasadas" value="3" />
               <MetricCard label="Tarefas Próximos 7 Dias" value="5" />
+              </div>
+            </div>
+
+            {/* Menu do Dashboard */}
+            <div className="mx-auto mt-16 max-w-4xl rounded-2xl border bg-card p-6 shadow-lg">
+              <h2 className="text-xl font-semibold mb-4">Menu do Dashboard</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <Button variant="outline" className="h-20">
+                  Campanhas
+                </Button>
+                <Button variant="outline" className="h-20">
+                  Tarefas
+                </Button>
+                <Button variant="outline" className="h-20">
+                  Indicadores
+                </Button>
+              </div>
+            </div>
             </div>
           </div>
 
