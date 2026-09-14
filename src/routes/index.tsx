@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MetricCard } from "@/components/MetricCard";
-import { Separator } from "@/components/ui/separator";
 import { CampaignFilters } from "@/components/CampaignFilters";
 import { DeadlineList } from "@/components/DeadlineList";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,6 @@ import {
   BarChart3,
   CheckCircle,
   Target,
-  Zap,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -93,24 +91,22 @@ function LandingPage() {
               <MetricCard label="Tarefas Concluídas" value="62" />
               <MetricCard label="Tarefas Atrasadas" value="3" />
               <MetricCard label="Tarefas Próximos 7 Dias" value="5" />
-              </div>
             </div>
+          </div>
 
-            {/* Menu do Dashboard */}
-            <div className="mx-auto mt-16 max-w-4xl rounded-2xl border bg-card p-6 shadow-lg">
-              <h2 className="text-xl font-semibold mb-4">Menu do Dashboard</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <Button variant="outline" className="h-20">
-                  Campanhas
-                </Button>
-                <Button variant="outline" className="h-20">
-                  Tarefas
-                </Button>
-                <Button variant="outline" className="h-20">
-                  Indicadores
-                </Button>
-              </div>
-            </div>
+          {/* Menu do Dashboard */}
+          <div className="mx-auto mt-16 max-w-4xl rounded-2xl border bg-card p-6 shadow-lg">
+            <h2 className="text-xl font-semibold mb-4">Menu do Dashboard</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Button variant="outline" className="h-20">
+                Campanhas
+              </Button>
+              <Button variant="outline" className="h-20">
+                Tarefas
+              </Button>
+              <Button variant="outline" className="h-20">
+                Indicadores
+              </Button>
             </div>
           </div>
 
